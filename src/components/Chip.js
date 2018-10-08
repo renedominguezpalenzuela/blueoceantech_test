@@ -1,0 +1,27 @@
+import React from 'react';
+import store from '../store.js';
+import {ac_delLenguajeFiltro} from '../actionsCreator';
+
+
+const   Chip = (props) => {
+
+  //console.log("un lenguaje ",props.unLenguaje.name)
+
+    return ( 
+
+        <span>
+           <span className="badge badge-info" key={props.unLenguaje.id}>
+                {props.unLenguaje.name}
+                <span className="badge badge-pill badge-light ml-2  btn" onClick={(e) => {
+                                                                          const lenguaje = props.unLenguaje;
+                                                                         // console.log('Lenguaje del ', lenguaje);
+                                                                          store.dispatch(ac_delLenguajeFiltro(lenguaje));
+                                                                          }}>X</span>         
+           </span> 
+           <span className="px-1"></span>
+        </span>             
+    );
+}
+
+export default Chip;
+

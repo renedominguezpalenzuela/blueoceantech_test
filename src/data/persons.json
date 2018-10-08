@@ -1,0 +1,25 @@
+[
+  { 
+   "id": 1, "name": "Rene Dominguez", "price": 299,  "image": "avatar.jpg" ,
+    "languages": [{"id": 1, "name": "Java"},{"id": 4, "name": "C#"},{"id": 9, "name": "PHP"},{"id": 12, "name": "Objective-C"}]      
+  },
+   { 
+   "id": 2, "name": "Axl Roses", "price": 299,  "image": "daniel.jpg" ,
+    "languages": [{"id": 16, "name": "Delphi"}]      
+  },
+  { 
+   "id": 3, "name": "Will Smith", "price": 299,  "image": "elliot.jpg" ,
+    "languages": [ {"id": 17, "name": "Go"},{"id": 4, "name": "C#"},{"id": 14, "name": "Perl"}]      
+  }
+  ,
+   { 
+   "id": 4, "name": "Alan White", "price": 299,  "image": "matthew.png" ,
+    "languages": [{"id": 19, "name": "Visual Basic"},{"id": 18, "name": "Scratch"},{"id": 13, "name": "Assembly"}]      
+  },
+  { 
+    "id": 5, "name": "Jhon Doe", "price": 39,  "image": "elliot.jpg" ,
+     "languages": [{"id": 1, "name": "Java"}, {"id": 19, "name": "Visual Basic"},{"id": 4, "name": "C#"},{"id": 13, "name": "Assembly"}]      
+   }
+
+    
+] 
