@@ -3,6 +3,45 @@ import {ac_togleSideBar} from '../actionsCreator';
 import {connect} from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
+//componente para el DropDown
+class NavDropdown extends React.Component {
+    constructor(props) {
+      super(props);
+      //Estado asociado con el DropDown si esta visible o no
+      this.state = {
+        isToggleOn: false
+      };
+    }
+
+ //Evento que se ejecuta al hacer clic en el DropDown
+    showDropdown(e) {
+      e.preventDefault();
+      this.setState(prevState => ({
+        isToggleOn: !prevState.isToggleOn
+      }));
+    }
+    
+    render() {
+      const classDropdownMenu = 'navbar-dark bg-dark dropdown-menu' + (this.state.isToggleOn ? ' show' : '')
+      return (
+        
+        <div>
+          <a className="nav-link dropdown-toggle " href="/" id="navbarDropdown" 
+                                                          role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false"
+            onClick={(e) => {this.showDropdown(e)}}>
+            {this.props.name}
+          </a>
+          <div className={classDropdownMenu} aria-labelledby="navbarDropdown">
+            {this.props.children}
+          </div>
+          </div> 
+        
+        
+      )
+    }
+  }
+
 
 const   Navegacion = (props) => {
 
@@ -28,9 +67,20 @@ const   Navegacion = (props) => {
                 
                       <a className="nav-link" href="/lista">List</a>
                   </li>
-                  <li className="nav-item">
-                      <a className="nav-link" href="/edit">Edit</a>
+                  <li className="nav-item dropdown">
+                     {/* <a className="nav-link" href="/edit">Edit</a>*/}
+                      <NavDropdown name="Edit">
+                        <a className="nav-link" href="/new">New</a>
+                       {/* <a className="dropdown-item" href="/">Another action</a>
+                        <div className="dropdown-divider"></div>
+                        <a className="dropdown-item" href="/">Something else here</a>*/}
+                     </NavDropdown>
+
                   </li>
+                
+                  
+                  
+
               
               </ul>
         
@@ -48,6 +98,8 @@ const   Navegacion = (props) => {
                   </li>            
               </ul>
       
+
+
 
       </nav>
   

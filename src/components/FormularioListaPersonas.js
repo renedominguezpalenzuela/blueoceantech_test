@@ -2,93 +2,43 @@ import React from 'react';
 import {reduxForm, Field} from 'redux-form';
 import { connect } from 'react-redux';
 import store from '../store.js';
-import Chip from './Chip';
-import {ac_addLenguajeFiltro} from '../actionsCreator';
+import Lenguajes from './Lenguajes.js';
 import {ac_addNombreFiltro} from '../actionsCreator';
-import {getLanguageObjectFromName} from './Funciones';
-import {ac_accionNula} from '../actionsCreator';
 
 
-
-const selectLenguajeOnChange = (val) =>{     
-
-    const language =getLanguageObjectFromName(val) ;
-    //console.log("texto",language); 
-    if (val){            
-      store.dispatch(ac_addLenguajeFiltro(language));
-    }
- }
- 
-
- const filtroNombresOnChange = (val) =>{        
-   // if (val){      
-       
-      store.dispatch(ac_addNombreFiltro(val));
-    //}
- }
-
- 
-
+//-------------------------------------------------------
+// Parte superior Vista: Lista de Personas 
+//-------------------------------------------------------
 
 let   FormularioListaPersonas = (props) => {
-   // console.log("Lista props", props.filtroLenguajes );
-    return ( 
-        
+ 
+    return (        
         <form className="mt-1 ml-10">
            <div className="form-group row">
             <div className="col-4  ">
                 <label htmlFor="filtroNombres" className="form-control-sm">Filter by Name</label>
-                <Field name="filtroNombres" component="input"  className="form-control" id="filtro_nombres" placeholder="Enter name"  onChange={(e) => {
-                                                                          const val = e.target.value;
-                                                                          filtroNombresOnChange(val);  }}/>
-
+                <Field name="filtroNombres" component="input"  className="form-control" id="filtro_nombres" placeholder="Enter name"  
+                                                    onChange={(e) => {
+                                                         const val = e.target.value;
+                                                         filtroNombresOnChange(val);  
+                                                    }}/>
             </div>
 
-
-
-             <div className="col-6">
-               <div className="form-group">
-                    <label htmlFor="filtroLenguajes" className="form-control-sm">Filter by Skills</label>
-
-                    <Field name="filtroLenguajes" component="select"  className="custom-select"  onChange={(e) => {
-                                                                          console.log("Extructura ", e.target.value);
-                                                                          const val = e.target.value;
-                                                                          //const texto = e.target.data-key;
-                                                                          //const val = e.target.dato;
-                                                                          selectLenguajeOnChange(val); 
-                                                                         }}> 
-
-                        <option/>
-
-                            {props.lista_Lenguajes.map(unLenguaje =>
-                                       
-                                      <option  key={unLenguaje.id}>
-                                      
-                                         {unLenguaje.name}    
-                                      </option> )
-                            }
-
-                    </Field>
-                       {/*Chips*/}                     
-                           {  
-                              
-                               props.filtroLenguajes.map(unLenguaje =>                                                        
-                                  <Chip unLenguaje={unLenguaje} key={unLenguaje.id} /> )
-                               
-                           }
-
-                     
-
-                     
-                       
-
-                                        
+            <div className="col-6">
+               <div className="form-group">                   
+                       {/*Chips Cerrables*/}                     
+                         <Lenguajes />   
                 </div>
+            </div> 
 
-
-           </div>  
            <div className="col-2 d-flex flex-column">
-           <button type="button" className="btn btn-primary mr-sm-2 d-block">New</button>
+           {/*<a className="btn btn-primary mr-sm-2 d-block" href="/new" role="button">New</a>*/}
+
+           <button type="button" className="btn btn-primary mr-sm-2 d-block" 
+             onClick={(e) => {
+                props.history.push('/new');
+             }}
+           >New</button>
            </div>
            </div>
                    
@@ -101,13 +51,13 @@ let   FormularioListaPersonas = (props) => {
 
 const mapStateToProps = (state) => ({
     lista_Lenguajes: state.mis_datos.lista_Lenguajes,
-    filtroLenguajes: state.mis_datos.formPersonas_filtroLenguajes,
+    fil_Lenguajes: state.mis_datos.fil_Lenguajes,
     filtroNombres: state.mis_datos.formPersonas_filtroNombres
 });
 
 
 const mapDispatchToProps = dispatch => {
-  /*  return  dispatch(ac_accionNula());*/
+    //return  dispatch(ac_accionNula());
 }
 
 FormularioListaPersonas = reduxForm({ 
@@ -122,5 +72,12 @@ FormularioListaPersonas = connect(
   
   export default FormularioListaPersonas;
 
+
+  const filtroNombresOnChange = (val) =>{        
+    // if (val){      
+        
+       store.dispatch(ac_addNombreFiltro(val));
+     //}
+  }
   
 

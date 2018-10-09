@@ -33,6 +33,7 @@ const ac_cargarDatos = () =>{
 
    
  const ac_addLenguajeFiltro = (lenguaje) =>{
+    
    
     return {    
             type: "ADD_LENGUAJE_FILTRO",
@@ -62,6 +63,18 @@ const ac_delPersona = (persona) =>{
 }
 
 
+
+const ac_EditPersona = (persona) =>{
+    
+   
+    return {    
+            type: "EDIT_PERSONA",
+            persona: persona
+            
+    }
+}
+
+
 const ac_addNombreFiltro = (nombre) =>{
     return {    
             type: "ADD_NOMBRE_FILTRO",
@@ -78,4 +91,40 @@ const ac_accionNula = (persona) =>{
     }
 }
 
-export {ac_delPersona, ac_togleSideBar, ac_cargarDatos, ac_addLenguajeFiltro, ac_addNombreFiltro, ac_delLenguajeFiltro, ac_accionNula};
+
+
+
+
+
+const ac_initFiltroLanguages = () =>{
+    return {    
+            type: "INIT_FILTRO_LANGUAJES"                        
+    }
+}
+
+
+
+
+
+const ac_addPersona = (persona) =>{   
+    return {    
+            type: "ADD_PERSONA",
+            persona: persona
+            
+    }
+}
+
+const ac_updatePersona = (persona, indice) =>{   
+    return {    
+            type: "UPDATE_PERSONA",
+            persona: persona,
+            indice: indice
+            
+    }
+}
+
+
+
+
+
+export {ac_updatePersona,ac_addPersona, ac_initFiltroLanguages, ac_EditPersona, ac_delPersona, ac_togleSideBar, ac_cargarDatos, ac_addLenguajeFiltro, ac_addNombreFiltro, ac_delLenguajeFiltro, ac_accionNula};

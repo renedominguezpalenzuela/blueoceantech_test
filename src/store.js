@@ -1,7 +1,8 @@
 import {createStore, combineReducers} from 'redux';
 import {reducer as formReducer} from 'redux-form';
 import { devToolsEnhancer } from 'redux-devtools-extension';
-import UnaPersona from './components/UnaPersona';
+
+
 
 
 
@@ -12,12 +13,13 @@ import UnaPersona from './components/UnaPersona';
 //TODO: redux no permite el uso de extructuras complejas
 //      crear varios estados y combinarlos 
 const estado_global = {
-    /*una_persona: {},*/
+    una_persona: {},
     lista_Personas: [],
     lista_Lenguajes:[],
-    formPersonas_filtroLenguajes:[],
+    fil_Lenguajes:[],
     formPersonas_filtroNombres:"",    
-     mostrarSideBar:false
+     mostrarSideBar:false,
+     inicializando:true
 }
 
 
@@ -40,26 +42,44 @@ const inicializarDatos = (p_estado_global, action)=>{
     return {
         ...p_estado_global,
         lista_Personas: action.lista_Personas,
-        lista_Lenguajes: action.lista_Lenguajes
+        lista_Lenguajes: action.lista_Lenguajes,
+        inicializando: false
     }
 }
 
-const addLenguajeFiltro = (p_estado_global, action)=>{    
+//ERROR si entra en el edit person duplica los lenguajes
+const addLenguajeFiltro = (p_estado_global, action)=>{  
 
-    //console.log('Lista lenguajes ',p_estado_global.formPersonas_filtroLenguajes)
 
     const f = (p_estado_global, action)=>{
-            if (p_estado_global.formPersonas_filtroLenguajes.indexOf(action.lenguaje)===-1) {                                  
-                return p_estado_global.formPersonas_filtroLenguajes.concat(action.lenguaje)
+          
+          const vID = action.lenguaje.id;
+          const obj = p_estado_global.fil_Lenguajes.find(UnLenguaje => UnLenguaje.id === vID);  
+         
+
+           // if (p_estado_global.fil_Lenguajes.indexOf(action.lenguaje)!==-1) { 
+
+            if (obj) {
+               // console.log('Encontrado ',action.lenguaje);  
+                return p_estado_global.fil_Lenguajes
+                
             }  else  {
-                return p_estado_global.formPersonas_filtroLenguajes
+             
+
+               // console.log('no encontrado ',action.lenguaje);                                 
+                return p_estado_global.fil_Lenguajes.concat(action.lenguaje)
             }  
     } 
+    
+
+
 
     return {
         ...p_estado_global,
-        formPersonas_filtroLenguajes:f(p_estado_global, action)
-   }                                  
+        fil_Lenguajes:f(p_estado_global, action)
+   }    
+   
+ 
        
 }
 
@@ -67,26 +87,85 @@ const addLenguajeFiltro = (p_estado_global, action)=>{
 const delLenguajeFiltro = (p_estado_global, action)=>{    
     return {
         ...p_estado_global,
-        formPersonas_filtroLenguajes: p_estado_global.formPersonas_filtroLenguajes.filter(unLenguaje=>unLenguaje.id!==action.lenguaje.id)                                         
+        fil_Lenguajes: p_estado_global.fil_Lenguajes.filter(unLenguaje=>unLenguaje.id!==action.lenguaje.id)                                         
     }    
 }
 
-const delPersona = (p_estado_global, action)=>{ 
-    console.log('Persona ', action.persona);  
+const delPersona = (p_estado_global, action)=>{  
     return {
         ...p_estado_global,
         lista_Personas: p_estado_global.lista_Personas.filter(unaPersona=>unaPersona.id!==action.persona.id)                                         
     }    
 }
 
+const editPersona = (p_estado_global, action)=>{ 
+    console.log('Persona lenguajes ', action.persona.languages)
+    return {
+        ...p_estado_global,
+        una_persona: action.persona, 
+        fil_Lenguajes: action.persona.languages        
+        
+    }    
+}
+
+
+//ERROR: si se elimina alguna persona del medio quedan huecos en el id
+// al agregar una nueva puede ser que se repita el id
+
+const addPersona = (p_estado_global, action)=>{
+   
+    
+    const total= p_estado_global.lista_Personas.length;
+
+
+    //console.log('total ',total);
+    action.persona.id = total+1;
+
+    //console.log('persona ',action.persona);
+
+    p_estado_global.lista_Personas.push(action.persona)
+
+
+    return {
+        ...p_estado_global,
+         lista_Personas:p_estado_global.lista_Personas,
+         una_persona:[]
+
+    }    
+ }
+
+const updatePersona = (p_estado_global, action)=>{
+   // action.persona.languages=p_estado_global.filtroLenguajes;
+   //console.log('Persona.lenguage', action.persona);
+    p_estado_global.lista_Personas[action.indice]=action.persona;
+    return {
+        ...p_estado_global,
+        lista_Personas: p_estado_global.lista_Personas
+    }    
+}
+
+
+
 const addNombreFiltro = (p_estado_global, action)=>{ 
-    //console.log("nombre ",action.nombre)
+    console.log("nombre ",action.nombre)
     return {
         ...p_estado_global,
         formPersonas_filtroNombres: action.nombre
         
     }
 }
+
+const initFiltroLanguages = (p_estado_global, action)=>{ 
+    //console.log("nombre ",action.nombre)
+    return {
+        ...p_estado_global,
+        fil_Lenguajes: [],
+        una_persona:[]
+        
+    }
+}
+
+
 
 //------------------------------------------------------------------
 // funcion reductora
@@ -107,8 +186,16 @@ switch(action.type)   {
         return  inicializarDatos(state,action);
     }
 
+
+    
     case 'ADD_NOMBRE_FILTRO':{
         return addNombreFiltro(state, action);
+    }
+
+
+    
+    case 'INIT_FILTRO_LANGUAJES':{
+        return initFiltroLanguages(state, action);
     }
 
     case 'ADD_LENGUAJE_FILTRO':{
@@ -122,6 +209,20 @@ switch(action.type)   {
     case 'DEL_PERSONA':{
         return delPersona(state, action);
     }
+
+    case 'EDIT_PERSONA':{
+        return editPersona(state, action);
+    }
+
+    case 'ADD_PERSONA':{
+        return addPersona(state, action);
+    }
+
+    case 'UPDATE_PERSONA':{
+        return updatePersona(state, action);
+    }
+
+    
 
     case 'ACCION_NULA':{
         return state;
@@ -157,6 +258,7 @@ const rootReducer = combineReducers({
     mis_datos: reducer,          //nombre del store principal: store.getState().mis_datos
     form:formReducer
 });
+
 const store = createStore(rootReducer, devToolsEnhancer()); 
 
 export default store;

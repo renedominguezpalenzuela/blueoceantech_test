@@ -5,23 +5,36 @@ import SideBar from './components/SideBar';
 import HomePage from './components/Home';
 import Page404 from './components/Page404';
 import About from './components/About';
-import Edit from './components/Edit';
 import ListaPersonas from './components/ListaPersonas';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import {connect} from 'react-redux';
+import FormularioUnaPersona from './components/FormularioUnaPersona';
+import store from './store';
+import {ac_cargarDatos} from './actionsCreator';
 
 class App extends Component {
 
+
+  constructor(props){
+    super(props);
+
+    
+  
+  }
+
+  componentDidMount(){
+        
+       
+    
+  }
+
   render() {
 
-    
+
+
     const mostrarSideBar_ClassSTR = "bg-dark d-flex align-items-stretch "+(this.props.mostrarSideBar ? 'toggled' : '');
-    
-    
-
-
-    return (
-      
+  
+    return (   
       
       <BrowserRouter>    
       <div>  
@@ -46,8 +59,9 @@ class App extends Component {
               <Switch>
                 <Route path="/"  component={HomePage} exact/>
                 <Route path="/lista"  component={ListaPersonas} exact/>
-                <Route path="/edit"  component={Edit} exact/>
+                <Route path="/edit"  component={FormularioUnaPersona} exact/>
                 <Route path="/about"  component={About} exact/>
+                <Route path="/new"  component={FormularioUnaPersona} exact/>
                 <Route component={Page404}/>
              </Switch>  
             </div> 

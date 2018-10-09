@@ -15,7 +15,7 @@ const   SideBar = (props) => {
 
           <div className="row"> 
             <div className="sidebar-nav col ml-5" >               
-                <a href="/edit">Edit</a>
+                <a href="/new">New</a>
             </div>    
           </div>      
           
