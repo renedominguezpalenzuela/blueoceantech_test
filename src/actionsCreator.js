@@ -124,7 +124,26 @@ const ac_updatePersona = (persona, indice) =>{
 }
 
 
+const ac_changeFiltroSalarioMax = (  salarioMax) =>{   
+    return {    
+            type: "CHANGE_FILTRO_SALARIO_MAX",
+                salarioMax: salarioMax                        
+    }
+}
+
+const ac_changeFiltroSalarioMin = (  salarioMin) =>{   
+    return {    
+            type: "CHANGE_FILTRO_SALARIO_MIN",
+                salarioMin: salarioMin                        
+    }
+}
 
 
 
-export {ac_updatePersona,ac_addPersona, ac_initFiltroLanguages, ac_EditPersona, ac_delPersona, ac_togleSideBar, ac_cargarDatos, ac_addLenguajeFiltro, ac_addNombreFiltro, ac_delLenguajeFiltro, ac_accionNula};
+
+
+
+
+
+
+export {ac_updatePersona,ac_addPersona, ac_initFiltroLanguages, ac_EditPersona, ac_delPersona, ac_togleSideBar, ac_cargarDatos, ac_addLenguajeFiltro, ac_addNombreFiltro, ac_delLenguajeFiltro, ac_accionNula,ac_changeFiltroSalarioMin,ac_changeFiltroSalarioMax};

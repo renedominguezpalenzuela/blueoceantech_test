@@ -4,9 +4,9 @@ import {connect} from 'react-redux';
 import {reduxForm, Field} from 'redux-form';
 
 
-import {ac_addLenguajeFiltro} from '../actionsCreator';
+import {ac_addLenguajeFiltro, ac_accionNula} from '../actionsCreator.js';
 
-import {getLanguageObjectFromName} from './Funciones';
+import {getLanguageObjectFromName} from './Funciones.js';
 
 import Chip from './Chip.js';
 
@@ -14,15 +14,15 @@ import Chip from './Chip.js';
 //Combobox seleccion de lenguajes
 //--------------------------------------------------
 
-let   Lenguajes = (props) => {
+let   FiltroLenguajes = (props) => {
 
   //console.log("Lenguajes2 ",props.una_persona.languages)
 
     return ( 
 <span>
-        <label htmlFor="filtroLenguajes" className="form-control-sm">Skills</label>
+        <label htmlFor="selectLenguaje" className="form-control-sm">Skills</label>
  
-                     <Field name="filtroLenguajes" component="select"  className="custom-select"  onChange={(e) => {
+                     <Field name="selectLenguaje" component="select"  className="custom-select"  onChange={(e) => {
                                                                            //console.log("Extructura ", e.target.value);
                                                                            const val = e.target.value;
                                                                            //const texto = e.target.data-key;
@@ -38,7 +38,7 @@ let   Lenguajes = (props) => {
                      </Field>          
                       {
                       props.fil_Lenguajes.map(unLenguaje =>                                                        
-                      <Chip unLenguaje={unLenguaje} key={unLenguaje.id} id={unLenguaje.id}/>)
+                      <Chip unLenguaje={unLenguaje} key={unLenguaje.id} id={unLenguaje.id} botonCerrarVisible={true}/>)
                       }
                </span>  
             
@@ -56,20 +56,20 @@ const mapStateToProps = (state) => ({
 
 
 const mapDispatchToProps = dispatch => {
-  /*  return  dispatch(ac_accionNula());*/
+    return  dispatch(ac_accionNula());
 }
 
-Lenguajes = reduxForm({ 
+FiltroLenguajes = reduxForm({ 
     form:'formListaPersonas'
-   })(Lenguajes)
+   })(FiltroLenguajes)
   
    
-   Lenguajes = connect(
+   FiltroLenguajes = connect(
       mapStateToProps,
       mapDispatchToProps
-  )(Lenguajes);
+  )(FiltroLenguajes);
   
-  export default Lenguajes;
+  export default FiltroLenguajes;
 
   const selectLenguajeOnChange = (val) =>{     
 

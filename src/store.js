@@ -19,7 +19,10 @@ const estado_global = {
     fil_Lenguajes:[],
     formPersonas_filtroNombres:"",    
      mostrarSideBar:false,
-     inicializando:true
+     inicializando:true,
+     salarioMin:0,
+     salarioMax:0,
+     prueba:""
 }
 
 
@@ -167,6 +170,35 @@ const initFiltroLanguages = (p_estado_global, action)=>{
 
 
 
+const changeFiltroSalarioMin = (p_estado_global, action)=>{ 
+    return {
+        ...p_estado_global,
+        salarioMin: action.salarioMin          
+    }
+}
+
+const changeFiltroSalarioMax = (p_estado_global, action)=>{ 
+    return {
+        ...p_estado_global,
+        salarioMax: action.salarioMax          
+    }
+}
+
+
+
+const prueba = (p_estado_global, action)=>{ 
+    console.log("nombre ",action.prueba)
+    return {
+        ...p_estado_global,
+        prueba: action.prueba
+        
+     
+        
+    }
+}
+
+
+
 //------------------------------------------------------------------
 // funcion reductora
 //------------------------------------------------------------------
@@ -220,6 +252,22 @@ switch(action.type)   {
 
     case 'UPDATE_PERSONA':{
         return updatePersona(state, action);
+    }
+
+
+    
+
+    case 'CHANGE_FILTRO_SALARIO_MIN':{
+        return changeFiltroSalarioMin(state, action);
+    }
+
+    case 'CHANGE_FILTRO_SALARIO_MAX':{
+        return changeFiltroSalarioMax(state, action);
+    }
+
+
+    case 'PRUEBA':{
+        return prueba(state, action);
     }
 
     

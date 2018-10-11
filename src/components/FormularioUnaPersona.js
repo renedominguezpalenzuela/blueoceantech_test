@@ -2,8 +2,8 @@ import React from 'react';
 import {reduxForm, Field, formValueSelector } from 'redux-form';
 import { connect } from 'react-redux';
 import store from '../store.js';
-import Lenguajes from './Lenguajes';
-import {ac_initFiltroLanguages,  ac_addPersona, ac_updatePersona} from '../actionsCreator';
+import FiltroLenguajes from './FiltroLenguajes.js';
+import {ac_initFiltroLanguages,  ac_addPersona, ac_updatePersona, ac_accionNula} from '../actionsCreator';
 
 
 
@@ -29,34 +29,35 @@ let   FormularioUnaPersona = (props) => {
             <div className="form-group row">             
                  <label htmlFor="filtroNombres" className="form-control-sm">Full Name</label>
                  <Field component='input'  name="nombre" type="text"  className="form-control" id="filtroNombres" placeholder="Enter Full name" />
-      
              </div>
              </div>  
  
  
              <div className="form-group row">
-              <div className="col-12">
-                <div className="form-group">
-                     
-                       {/*Chips*/}                     
-                       <Lenguajes/>
-    
-                      
-                        
- 
-                                         
-                 </div>
- 
- 
-            </div>  
-           
+                <div className="col-12">
+                    <div className="form-group">                  
+                       <FiltroLenguajes/>                                          
+                    </div> 
+                </div>            
             </div>
 
+              <div className="form-group row">
+                <div className="col-12">
+                    <div className="form-group">                  
+                    <label htmlFor="salario" className="form-control-sm">Salary ($)</label>
+                        <Field component='input'  name="salario" type="number"  className="form-control" id="salario" placeholder="Enter Salary" step="10" />                                          
+                    </div> 
+                </div>            
+            </div>
+
+            
+
              <div className="col-6 d-flex">
+
              <button type="button" className="btn btn-primary mr-sm-2 d-block"
                 
                 onClick={(e) => {
-                      {/*if (!persona.id) {persona.id=0;}*/}
+                     
                       persona.name = props.nombre;
                      //realizar las validaciones con el metodo de redux-form
                      
@@ -68,6 +69,7 @@ let   FormularioUnaPersona = (props) => {
 
                  }}            
              >Save</button>
+
              <button type="button" className="btn btn-primary mr-sm-2 d-block" onClick={(e) => {
                  store.dispatch(ac_initFiltroLanguages());
                  props.history.goBack();
@@ -98,7 +100,7 @@ let   FormularioUnaPersona = (props) => {
  
  
  const mapDispatchToProps = dispatch => {
-   /*  return  dispatch(ac_accionNula());*/
+    return  dispatch(ac_accionNula());
  }
  
  FormularioUnaPersona = reduxForm({ 

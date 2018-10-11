@@ -12,11 +12,15 @@ const   Chip = (props) => {
         <span>
            <span className="badge badge-info" key={props.unLenguaje.id}>
                 {props.unLenguaje.name}
+
+                {props.botonCerrarVisible?
                 <span className="badge badge-pill badge-light ml-2  btn" onClick={(e) => {
                                                                           const lenguaje = props.unLenguaje;
-                                                                         // console.log('Lenguaje del ', lenguaje);
+                                                                        
                                                                           store.dispatch(ac_delLenguajeFiltro(lenguaje));
                                                                           }}>X</span>         
+                  :''                                                        
+                                                                        }                                                         
            </span> 
            <span className="px-1"></span>
         </span>             

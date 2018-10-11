@@ -8,22 +8,15 @@ import {ac_accionNula} from '../actionsCreator';
 //Devuelve arreglo con lista de personas aplicando los filtros
 const   ListaPersonas = (props) => {
        return (                        
-            <div>
-                  <FormularioListaPersonas  history={props.history}/>
-                  
-       {filtro(props).map(unaPersona =>{
-                       {/* {props.lista_Personas.map(unaPersona =>{*/}
+            <div className="col-10">
+                  <FormularioListaPersonas  history={props.history}/>                 
+                  {filtro(props).map(unaPersona =>{     
                             return (
                                 <div key={unaPersona.id}>                      
-                                    <UnaPersona persona={unaPersona} history={props.history}  id={unaPersona.id} key={unaPersona.id}/>     
+                                    <UnaPersona persona={unaPersona} history={props.history}  id={unaPersona.id} key={unaPersona.id}/>          
                                 </div>
                             );                                                                                                        
                   })}
-
-
-                     
-
-
             </div>
     
          );    
@@ -35,9 +28,10 @@ const mapStateToProps = state => {
   //console.log('datos ',state.mis_datos.lista_Personas);
     return {
       lista_Personas: state.mis_datos.lista_Personas,  
-      fil_Lenguajes:state.mis_datos.fil_Lenguajes,
-      
-      formPersonas_filtroNombres:state.mis_datos.formPersonas_filtroNombres  
+      fil_Lenguajes:state.mis_datos.fil_Lenguajes,   
+      formPersonas_filtroNombres:state.mis_datos.formPersonas_filtroNombres,
+      salarioMin:state.mis_datos.salarioMin,  
+      salarioMax:state.mis_datos.salarioMax
     }
   }
   
@@ -72,7 +66,7 @@ const mapStateToProps = state => {
     //Filtrado por Lenguajes
     const criterio2=props.fil_Lenguajes;
    
-    let lista_final=[];
+    let lista_filtro2=[];
     if (criterio2.length>0) {
       
           
@@ -96,13 +90,28 @@ const mapStateToProps = state => {
 
             //comprobar antes de agregar que no exista 
             if (arreglo_booleano.every(unbooleano=>unbooleano===true)) {    
-              if (lista_final.indexOf(unaPersona)===-1){                   
-                  lista_final.push(unaPersona);           
+              if (lista_filtro2.indexOf(unaPersona)===-1){                   
+                  lista_filtro2.push(unaPersona);           
               } 
             }
           })
       } else {
-        lista_final=lista
+        lista_filtro2=lista
+      }
+
+      const salarioMin = props.salarioMin;
+      const salarioMax = props.salarioMax;
+
+      //Tercer filtro por salario
+      let lista_final=[];
+
+      if (salarioMin<salarioMax && salarioMax!==0){
+
+        lista_final = lista_filtro2.filter(unaPersona=>unaPersona.salary>=salarioMin && unaPersona.salary<=salarioMax);                                         
+       
+
+      } else {
+        lista_final = lista_filtro2;
       }
 
    

@@ -6,7 +6,7 @@ import HomePage from './components/Home';
 import Page404 from './components/Page404';
 import About from './components/About';
 import ListaPersonas from './components/ListaPersonas';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {BrowserRouter,Route, Switch} from 'react-router-dom';
 import {connect} from 'react-redux';
 import FormularioUnaPersona from './components/FormularioUnaPersona';
 import store from './store';
@@ -17,6 +17,11 @@ class App extends Component {
 
   constructor(props){
     super(props);
+    //Inicializando (llamando API (fake) devuelve datos en json)
+  if (store.getState().mis_datos.inicializando){
+    console.log('inicializando');
+     store.dispatch(ac_cargarDatos());
+  }
 
     
   
@@ -36,7 +41,7 @@ class App extends Component {
   
     return (   
       
-      <BrowserRouter>    
+      <BrowserRouter  >    
       <div>  
         <div className="row">
            <div className="col" >          
@@ -55,7 +60,8 @@ class App extends Component {
             </div>
 
             <div className="col d-flex justify-content-center">
-              {/*Contenido principal*/}             
+              {/*Contenido principal*/}   
+             
               <Switch>
                 <Route path="/"  component={HomePage} exact/>
                 <Route path="/lista"  component={ListaPersonas} exact/>
@@ -63,7 +69,8 @@ class App extends Component {
                 <Route path="/about"  component={About} exact/>
                 <Route path="/new"  component={FormularioUnaPersona} exact/>
                 <Route component={Page404}/>
-             </Switch>  
+             </Switch>
+                 
             </div> 
          </div>
        
