@@ -59,6 +59,7 @@ let   FormularioUnaPersona = (props) => {
                 onClick={(e) => {
                      
                       persona.name = props.nombre;
+                      persona.salary = props.salario;
                      //realizar las validaciones con el metodo de redux-form
                      
                     if (persona.name) {
@@ -122,11 +123,14 @@ FormularioUnaPersona = connect(
   state => {
     // can select values individually
     const nombre = selector(state, 'nombre')
+    const salario = selector(state, 'salario')
+    
     
     // or together as a group
     //const { firstName, lastName } = selector(state, 'firstName', 'lastName')
     return {
       nombre,
+      salario
     }
   }
 )(FormularioUnaPersona)
@@ -149,6 +153,8 @@ FormularioUnaPersona = connect(
 
     const fil_Lenguajes = store.getState().mis_datos.fil_Lenguajes;
     persona.languages=fil_Lenguajes;
+
+    
    
 
 
@@ -161,7 +167,7 @@ FormularioUnaPersona = connect(
     } else {
         //console.log('Persona NO encontrada ', persona);
         
-        persona.salary=0;
+       
         persona.image="elliot.jpg";
       
 
