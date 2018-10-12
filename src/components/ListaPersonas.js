@@ -5,6 +5,10 @@ import FormularioFiltroListaPersonas from './FormularioFiltroListaPersonas';
 import {ac_accionNula} from '../actionsCreator';
 
 
+
+
+
+
 //Devuelve arreglo con lista de personas aplicando los filtros
 const   ListaPersonas = (props) => {
        return (                        
@@ -25,8 +29,9 @@ const   ListaPersonas = (props) => {
 
 
 const mapStateToProps = state => { 
-  //console.log('datos ',state.mis_datos.lista_Personas);
+ 
     return {
+      inicializando:state.mis_datos.inicializando,
       lista_Personas: state.mis_datos.lista_Personas,  
       fil_Lenguajes:state.mis_datos.fil_Lenguajes,   
       formPersonas_filtroNombres:state.mis_datos.formPersonas_filtroNombres,
@@ -47,7 +52,11 @@ const mapStateToProps = state => {
 
   const filtro = (props)=>{  
 
+ 
+
+
     let lista =props.lista_Personas; 
+    
     const criterio1=props.formPersonas_filtroNombres.toLowerCase();
    
     //Filtrado por nombre

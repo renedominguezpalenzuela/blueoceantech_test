@@ -18,7 +18,8 @@ const estado_global = {
      ageMin:0,
      ageMax:0,
      error_filtro_rango_edad:false,
-     prueba:""
+     prueba:"",
+    
 }
 
 

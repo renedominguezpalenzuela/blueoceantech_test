@@ -51,11 +51,12 @@ let   UnaPersona = (props) => {
                             
                             <div className="col-2">
                                 <div className="d-flex flex-column"> 
-                                  {/*<a className="btn btn-primary mt-5 mr-3 d-block" href="/edit" role="button"*/} 
+                               
                                         <button type="button" className="btn btn-primary d-block mt-5 mr-3"                                                         
                                                              onClick={(e) => {  
                                                                 
                                                                 store.dispatch(ac_EditPersona(props.persona));
+
                                                                 props.history.push('/new');
                                                                    
                                                              }}>
@@ -64,6 +65,7 @@ let   UnaPersona = (props) => {
 
                                         <button type="button" className="btn btn-primary d-block mt-1 mr-3" 
                                                            onClick={(e) => {                                                                                                                                                             
+                                                               
                                                                 store.dispatch(ac_delPersona(props.persona));
                                                            }}>
                                         Delete</button>  
@@ -88,7 +90,8 @@ const mapStateToProps = (state) => ({
     name: state.mis_datos.una_persona.name,
     lista_Lenguajes: state.mis_datos.lista_Lenguajes,
     fil_Lenguajes: state.mis_datos.fil_Lenguajes,
-    filtroNombres: state.mis_datos.formPersonas_filtroNombres
+    filtroNombres: state.mis_datos.formPersonas_filtroNombres,
+    lista_Personas: state.mis_datos.lista_Personas  /*AGREGADO*/
 });
 
 

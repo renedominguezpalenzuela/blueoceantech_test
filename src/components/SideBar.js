@@ -1,21 +1,21 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 
 
 const   SideBar = (props) => {
     return (
       <div className="content">
-
-          
+         
           <div className="row mt-3"> 
             <div className="sidebar-nav col ml-5" >               
-                <a href="/lista">List</a>
+               <NavLink  className="nav-link"  to ="/lista"> List </NavLink> 
             </div>    
           </div> 
 
           <div className="row"> 
             <div className="sidebar-nav col ml-5" >               
-                <a href="/new">New</a>
+                <NavLink  className="nav-link"  to ="/new"> New </NavLink> 
             </div>    
           </div>      
           

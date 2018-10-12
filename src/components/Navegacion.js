@@ -4,53 +4,76 @@ import {connect} from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
 //componente para el DropDown
-class NavDropdown extends React.Component {
-    constructor(props) {
-      super(props);
-      //Estado asociado con el DropDown si esta visible o no
-      this.state = {
-        isToggleOn: false
-      };
-    }
-
- //Evento que se ejecuta al hacer clic en el DropDown
-    showDropdown(e) {
-      e.preventDefault();
-      this.setState(prevState => ({
-        isToggleOn: !prevState.isToggleOn
-      }));
-    }
-    
-    render() {
-      const classDropdownMenu = 'navbar-dark bg-dark dropdown-menu' + (this.state.isToggleOn ? ' show' : '')
-      return (
+const NavDropdown = (props) => {
+      
+       return (
         
         <div>
-          <a className="nav-link dropdown-toggle " href="/" id="navbarDropdown" 
-                                                          role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false"
-            onClick={(e) => {this.showDropdown(e)}}>
-            {this.props.name}
-          </a>
-          <div className={classDropdownMenu} aria-labelledby="navbarDropdown">
-            {this.props.children}
-          </div>
+
+       
+           <NavLink  className="nav-link dropdown-toggle"  to ="/" id="navbarDropdown" 
+                                                           role="button" data-toggle="dropdown"
+                                                           aria-haspopup="true" aria-expanded="false"
+                                                           onClick={(e) => {props.toogleDropdown(e)}}>
+             Edit
+           </NavLink> 
+
+          
+
+            <div className={props.classDropdownMenu} aria-labelledby="navbarDropdown">
+              {props.children}
+            </div>
+
           </div> 
         
         
       )
     }
+ 
+
+
+  const estilo = {
+    width:'40px'
+  } ;
+
+class  Navegacion extends React.Component {
+  constructor(props) {
+    super(props);
+    //Estado asociado con el DropDown si esta visible o no
+    this.state = {
+      isToggleOn: false
+    };
+    this.toogleDropdown = this.toogleDropdown.bind(this);
+    this.closeDropdown = this.closeDropdown.bind(this);
   }
 
 
-const   Navegacion = (props) => {
 
-        const estilo = {
-            width:'40px'
-          } ;        
+  toogleDropdown(e) {
+    e.preventDefault();
+    this.setState(prevState => ({
+     
+      isToggleOn: !prevState.isToggleOn
+    }));
+
+    
+  }
+
+  
+  closeDropdown(e) {
+    this.setState(prevState => ({
+      isToggleOn: false
+    }));    
+  }
 
 
-        return ( 
+             
+  render() {
+
+    
+     const classDropdownMenu = 'navbar-dark bg-dark dropdown-menu' + (this.state.isToggleOn ? ' show' : '')
+     
+         return ( 
 
             <nav className="navbar navbar-expand navbar-dark bg-dark sticky-top">
 
@@ -60,17 +83,21 @@ const   Navegacion = (props) => {
 
                   {/*Boton de tres barras mostrar/ocultar side bar  */}
                   <li className="nav-item mt-1 mr-sm-2">
-                      <span className="navbar-toggler-icon" onClick={props.togleSideBar}></span>
+                      <span className="navbar-toggler-icon" onClick={this.props.togleSideBar}></span>
                   </li>
 
                   <li className="nav-item">
                 
-                      <a className="nav-link" href="/lista">List</a>
+                     
+                      <NavLink  className="nav-link"  to ="/lista"> List </NavLink> 
                   </li>
+
+                  
                   <li className="nav-item dropdown">
-                     {/* <a className="nav-link" href="/edit">Edit</a>*/}
-                      <NavDropdown name="Edit">
-                        <a className="nav-link" href="/new">New</a>
+                     
+                      <NavDropdown props={this.props} classDropdownMenu={classDropdownMenu} toogleDropdown={this.toogleDropdown}>
+                  
+                        <NavLink  className="nav-link"  to ="/new"   onClick={(e) => {this.closeDropdown(e)}} > New </NavLink> 
                        {/* <a className="dropdown-item" href="/">Another action</a>
                         <div className="dropdown-divider"></div>
                         <a className="dropdown-item" href="/">Something else here</a>*/}
@@ -86,15 +113,19 @@ const   Navegacion = (props) => {
         
 
           {/*Imagen central*/}
-          <div className="mx-auto order-0">          
-              <a className="navbar-brand mx-auto" href="/"> <img src={process.env.PUBLIC_URL + '/img/logo.png'} alt="Logo" style={estilo}/> BlueOcean Tech Test</a>          
+          <div className="mx-auto order-0">
+
+              <NavLink  className="navbar-brand mx-auto"  to ="/"> <img src={process.env.PUBLIC_URL + '/img/logo.png'} alt="Logo" style={estilo}/> BlueOcean Tech Test </NavLink>           
+              
           </div>
 
           {/*Menu a la derecha*/}
         
               <ul className="navbar-nav ml-auto">
                   <li className="nav-item">
-                      <a className="nav-link" href="/about">About</a>
+
+                     <NavLink  className="nav-link"  to ="/about"> About </NavLink> 
+
                   </li>            
               </ul>
       
@@ -107,6 +138,8 @@ const   Navegacion = (props) => {
 
     );    
 }
+}
+
  
 
 const mapStateToProps = state => {  

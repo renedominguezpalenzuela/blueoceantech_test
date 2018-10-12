@@ -40,8 +40,10 @@ let   FormularioUnaPersona = (props) => {
 
             
 
+             
              <div className="col-6 d-flex">
 
+            {/*Boton Salvar*/}
              <button type="button" className="btn btn-primary mr-sm-2 d-block"
                 
                 onClick={(e) => {
@@ -60,6 +62,8 @@ let   FormularioUnaPersona = (props) => {
                  }}            
              >Save</button>
 
+
+             {/*Boton Cancelar*/}
              <button type="button" className="btn btn-primary mr-sm-2 d-block" onClick={(e) => {
                  store.dispatch(ac_initFiltroLanguages());
                  //props.history.goBack();
@@ -150,6 +154,8 @@ FormularioUnaPersona = connect(
             persona.image="elliot.jpg";
             store.dispatch(ac_addPersona(persona));
         }
+
+        console.log('formPersona  ',store.getState().mis_datos.lista_Personas);
     
   }
   
