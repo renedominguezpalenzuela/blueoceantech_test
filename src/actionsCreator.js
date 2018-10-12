@@ -124,17 +124,17 @@ const ac_updatePersona = (persona, indice) =>{
 }
 
 
-const ac_changeFiltroSalarioMax = (  salarioMax) =>{   
+const ac_changeFiltroAgeMax = ( ageMax) =>{   
     return {    
-            type: "CHANGE_FILTRO_SALARIO_MAX",
-                salarioMax: salarioMax                        
+            type: "CHANGE_FILTRO_AGE_MAX",
+                ageMax: ageMax                        
     }
 }
 
-const ac_changeFiltroSalarioMin = (  salarioMin) =>{   
+const ac_changeFiltroAgeMin = (  ageMin) =>{   
     return {    
-            type: "CHANGE_FILTRO_SALARIO_MIN",
-                salarioMin: salarioMin                        
+            type: "CHANGE_FILTRO_AGE_MIN",
+                ageMin: ageMin                        
     }
 }
 
@@ -146,4 +146,4 @@ const ac_changeFiltroSalarioMin = (  salarioMin) =>{
 
 
 
-export {ac_updatePersona,ac_addPersona, ac_initFiltroLanguages, ac_EditPersona, ac_delPersona, ac_togleSideBar, ac_cargarDatos, ac_addLenguajeFiltro, ac_addNombreFiltro, ac_delLenguajeFiltro, ac_accionNula,ac_changeFiltroSalarioMin,ac_changeFiltroSalarioMax};
+export {ac_updatePersona,ac_addPersona, ac_initFiltroLanguages, ac_EditPersona, ac_delPersona, ac_togleSideBar, ac_cargarDatos, ac_addLenguajeFiltro, ac_addNombreFiltro, ac_delLenguajeFiltro, ac_accionNula,ac_changeFiltroAgeMin,ac_changeFiltroAgeMax};

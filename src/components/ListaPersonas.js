@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import UnaPersona from './UnaPersona';
-import FormularioListaPersonas from './FormularioListaPersonas';
+import FormularioFiltroListaPersonas from './FormularioFiltroListaPersonas';
 import {ac_accionNula} from '../actionsCreator';
 
 
@@ -9,7 +9,7 @@ import {ac_accionNula} from '../actionsCreator';
 const   ListaPersonas = (props) => {
        return (                        
             <div className="col-10">
-                  <FormularioListaPersonas  history={props.history}/>                 
+                  <FormularioFiltroListaPersonas  history={props.history}/>                 
                   {filtro(props).map(unaPersona =>{     
                             return (
                                 <div key={unaPersona.id}>                      
@@ -30,8 +30,8 @@ const mapStateToProps = state => {
       lista_Personas: state.mis_datos.lista_Personas,  
       fil_Lenguajes:state.mis_datos.fil_Lenguajes,   
       formPersonas_filtroNombres:state.mis_datos.formPersonas_filtroNombres,
-      salarioMin:state.mis_datos.salarioMin,  
-      salarioMax:state.mis_datos.salarioMax
+      ageMin:state.mis_datos.ageMin,  
+      ageMax:state.mis_datos.ageMax
     }
   }
   
@@ -99,15 +99,17 @@ const mapStateToProps = state => {
         lista_filtro2=lista
       }
 
-      const salarioMin = props.salarioMin;
-      const salarioMax = props.salarioMax;
+      const ageMin = props.ageMin;
+      const ageMax = props.ageMax;
 
-      //Tercer filtro por salario
+      //Tercer filtro por Edad
       let lista_final=[];
 
-      if (salarioMin<salarioMax && salarioMax!==0){
+       
+      if ( (ageMin<=ageMax && ageMin) || (ageMin<=ageMax && ageMax) ){
 
-        lista_final = lista_filtro2.filter(unaPersona=>unaPersona.salary>=salarioMin && unaPersona.salary<=salarioMax);                                         
+        
+        lista_final = lista_filtro2.filter(unaPersona=>unaPersona.age>=ageMin && unaPersona.age<=ageMax);                                         
        
 
       } else {

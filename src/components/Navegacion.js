@@ -121,7 +121,7 @@ const mapStateToProps = state => {
   const mapDispatchToProps = dispatch => {
     return     {
        togleSideBar() {
-        console.log('togle sideBAR');
+       // console.log('togle sideBAR');
          dispatch(ac_togleSideBar());
       },
     }

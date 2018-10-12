@@ -4,36 +4,24 @@ import { connect } from 'react-redux';
 import store from '../store.js';
 import FiltroLenguajes from './FiltroLenguajes.js';
 import {ac_initFiltroLanguages,  ac_addPersona, ac_updatePersona, ac_accionNula} from '../actionsCreator';
-
-
-
-
-
-
- /*Salvar: 
-                    copiarle a una_persona el filtro de lenguajes
-                    buscar una_persona en la lista, si existe la modifico sino la agrego*/
-                    
-                  
-                    
+                     
 
 let   FormularioUnaPersona = (props) => {
 
    let persona = props.una_persona;
-
   
      return ( 
          
          <form className="mt-5 ml-10">
-         <div className="col-12">
-            <div className="form-group row">             
-                 <label htmlFor="filtroNombres" className="form-control-sm">Full Name</label>
-                 <Field component='input'  name="nombre" type="text"  className="form-control" id="filtroNombres" placeholder="Enter Full name" />
-             </div>
-             </div>  
+            <div className="col-12">
+                <div className="form-group row">             
+                    <label htmlFor="filtroNombres" className="form-control-sm">Full Name</label>
+                    <Field component='input'  name="nombre" type="text"  className="form-control" id="filtroNombres" placeholder="Enter Full name" />
+                </div>
+            </div>  
  
  
-             <div className="form-group row">
+            <div className="form-group row">
                 <div className="col-12">
                     <div className="form-group">                  
                        <FiltroLenguajes/>                                          
@@ -44,8 +32,8 @@ let   FormularioUnaPersona = (props) => {
               <div className="form-group row">
                 <div className="col-12">
                     <div className="form-group">                  
-                    <label htmlFor="salario" className="form-control-sm">Salary ($)</label>
-                        <Field component='input'  name="salario" type="number"  className="form-control" id="salario" placeholder="Enter Salary" step="10" />                                          
+                    <label htmlFor="age" className="form-control-sm">Age</label>
+                        <Field component='input'  name="age" type="number"  className="form-control" id="age" placeholder="Enter Age" step="10" />                                          
                     </div> 
                 </div>            
             </div>
@@ -59,7 +47,7 @@ let   FormularioUnaPersona = (props) => {
                 onClick={(e) => {
                      
                       persona.name = props.nombre;
-                      persona.salary = props.salario;
+                      persona.age = props.age;
                      //realizar las validaciones con el metodo de redux-form
                      
                     if (persona.name) {
@@ -91,7 +79,8 @@ let   FormularioUnaPersona = (props) => {
 
  const mapStateToProps = (state) => ({
     initialValues : {
-        nombre: state.mis_datos.una_persona.name
+        nombre: state.mis_datos.una_persona.name,
+        age: state.mis_datos.una_persona.age
     },
     una_persona: state.mis_datos.una_persona,
      lista_Lenguajes: state.mis_datos.lista_Lenguajes,
@@ -123,14 +112,14 @@ FormularioUnaPersona = connect(
   state => {
     // can select values individually
     const nombre = selector(state, 'nombre')
-    const salario = selector(state, 'salario')
+    const age = selector(state, 'age')
     
     
     // or together as a group
     //const { firstName, lastName } = selector(state, 'firstName', 'lastName')
     return {
       nombre,
-      salario
+      age
     }
   }
 )(FormularioUnaPersona)
@@ -142,38 +131,23 @@ FormularioUnaPersona = connect(
    
 
    const salvar = (persona) =>{   
-       
-    
     
     //ERROR Aqui falla en encontrar 
     const vID = persona.id;
     const obj = store.getState().mis_datos.lista_Personas.find(unaPersona => unaPersona.id === vID); 
-   
-    
-
+  
     const fil_Lenguajes = store.getState().mis_datos.fil_Lenguajes;
     persona.languages=fil_Lenguajes;
 
-    
-   
-
-
-
-    if (obj){
-        //console.log('Persona encontrada ', persona);
-        const indice =store.getState().mis_datos.lista_Personas.indexOf(persona);
-        store.dispatch(ac_updatePersona(persona, indice));        
-
-    } else {
-        //console.log('Persona NO encontrada ', persona);
-        
-       
-        persona.image="elliot.jpg";
-      
-
-        store.dispatch(ac_addPersona(persona));
-    }
-
+        if (obj){
+            //console.log('Persona encontrada ', persona);
+            const indice =store.getState().mis_datos.lista_Personas.indexOf(persona);
+            store.dispatch(ac_updatePersona(persona, indice));        
+        } else {
+            //console.log('Persona NO encontrada ', persona);
+            persona.image="elliot.jpg";
+            store.dispatch(ac_addPersona(persona));
+        }
     
   }
   

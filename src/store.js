@@ -2,11 +2,6 @@ import {createStore, combineReducers} from 'redux';
 import {reducer as formReducer} from 'redux-form';
 import { devToolsEnhancer } from 'redux-devtools-extension';
 
-
-
-
-
-
 //------------------------------------------------------------------
 //Objeto JS que guarda el estado
 //------------------------------------------------------------------
@@ -20,8 +15,8 @@ const estado_global = {
     formPersonas_filtroNombres:"",    
      mostrarSideBar:false,
      inicializando:true,
-     salarioMin:0,
-     salarioMax:0,
+     ageMin:0,
+     ageMax:0,
      prueba:""
 }
 
@@ -52,7 +47,6 @@ const inicializarDatos = (p_estado_global, action)=>{
 
 //ERROR si entra en el edit person duplica los lenguajes
 const addLenguajeFiltro = (p_estado_global, action)=>{  
-
 
     const f = (p_estado_global, action)=>{
           
@@ -102,7 +96,7 @@ const delPersona = (p_estado_global, action)=>{
 }
 
 const editPersona = (p_estado_global, action)=>{ 
-    console.log('Persona lenguajes ', action.persona.languages)
+   // console.log('Persona lenguajes ', action.persona.languages)
     return {
         ...p_estado_global,
         una_persona: action.persona, 
@@ -150,7 +144,7 @@ const updatePersona = (p_estado_global, action)=>{
 
 
 const addNombreFiltro = (p_estado_global, action)=>{ 
-    console.log("nombre ",action.nombre)
+    //console.log("nombre ",action.nombre)
     return {
         ...p_estado_global,
         formPersonas_filtroNombres: action.nombre
@@ -170,24 +164,27 @@ const initFiltroLanguages = (p_estado_global, action)=>{
 
 
 
-const changeFiltroSalarioMin = (p_estado_global, action)=>{ 
+const changeFiltroAgeMin = (p_estado_global, action)=>{ 
+
+
     return {
         ...p_estado_global,
-        salarioMin: action.salarioMin          
+        ageMin: action.ageMin          
     }
 }
 
-const changeFiltroSalarioMax = (p_estado_global, action)=>{ 
+const changeFiltroAgeMax = (p_estado_global, action)=>{ 
+ 
     return {
         ...p_estado_global,
-        salarioMax: action.salarioMax          
+        ageMax: action.ageMax          
     }
 }
 
 
 
 const prueba = (p_estado_global, action)=>{ 
-    console.log("nombre ",action.prueba)
+   // console.log("nombre ",action.prueba)
     return {
         ...p_estado_global,
         prueba: action.prueba
@@ -257,12 +254,12 @@ switch(action.type)   {
 
     
 
-    case 'CHANGE_FILTRO_SALARIO_MIN':{
-        return changeFiltroSalarioMin(state, action);
+    case 'CHANGE_FILTRO_AGE_MIN':{
+        return changeFiltroAgeMin(state, action);
     }
 
-    case 'CHANGE_FILTRO_SALARIO_MAX':{
-        return changeFiltroSalarioMax(state, action);
+    case 'CHANGE_FILTRO_AGE_MAX':{
+        return changeFiltroAgeMax(state, action);
     }
 
 

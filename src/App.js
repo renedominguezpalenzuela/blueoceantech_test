@@ -18,10 +18,10 @@ class App extends Component {
   constructor(props){
     super(props);
     //Inicializando (llamando API (fake) devuelve datos en json)
-  if (store.getState().mis_datos.inicializando){
-    console.log('inicializando');
-     store.dispatch(ac_cargarDatos());
-  }
+    if (store.getState().mis_datos.inicializando){
+      //console.log('inicializando');
+      store.dispatch(ac_cargarDatos());
+    }
 
     
   

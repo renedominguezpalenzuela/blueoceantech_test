@@ -30,7 +30,7 @@ let   UnaPersona = (props) => {
                             <div className="col-8 px-3">
                                 <div className="card-block px-3">
                                 <h4 className="card-title">{props.persona.name}</h4>
-                                <h6>Salary: $ {props.persona.salary} </h6>
+                                <h6>Age: {props.persona.age} </h6>
 
                                 <p className="card-text">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
                                 <div>

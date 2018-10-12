@@ -1,23 +1,23 @@
 [
   { 
-   "id": 1, "name": "Rene Dominguez", "salary": 100,  "image": "avatar.jpg" , 
+   "id": 1, "name": "Rene Dominguez", "age": 100,  "image": "avatar.jpg" , 
     "languages": [{"id": 1, "name": "Java"},{"id": 4, "name": "C#"},{"id": 9, "name": "PHP"},{"id": 12, "name": "Objective-C"}]      
   },
    { 
-   "id": 2, "name": "Axl Roses", "salary": 300,  "image": "daniel.jpg" ,"salary":300,
+   "id": 2, "name": "Axl Roses", "age": 150,  "image": "daniel.jpg" ,"salary":300,
     "languages": [{"id": 16, "name": "Delphi"}]      
   },
   { 
-   "id": 3, "name": "Will Smith", "salary": 90,  "image": "elliot.jpg" , 
+   "id": 3, "name": "Will Smith", "age": 90,  "image": "elliot.jpg" , 
     "languages": [ {"id": 17, "name": "Go"},{"id": 4, "name": "C#"},{"id": 14, "name": "Perl"}]      
   }
   ,
    { 
-   "id": 4, "name": "Alan White", "salary": 400,  "image": "matthew.png" ,
+   "id": 4, "name": "Alan White", "age": 30,  "image": "matthew.png" ,
     "languages": [{"id": 19, "name": "Visual Basic"},{"id": 18, "name": "Scratch"},{"id": 13, "name": "Assembly"}]      
   },
   { 
-    "id": 5, "name": "Jhon Doe", "salary": 2000,  "image": "elliot.jpg" ,
+    "id": 5, "name": "Jhon Doe", "age": 20,  "image": "elliot.jpg" ,
      "languages": [{"id": 1, "name": "Java"}, {"id": 19, "name": "Visual Basic"},{"id": 4, "name": "C#"},{"id": 13, "name": "Assembly"}]      
    }
 
