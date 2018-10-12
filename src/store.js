@@ -17,6 +17,7 @@ const estado_global = {
      inicializando:true,
      ageMin:0,
      ageMax:0,
+     error_filtro_rango_edad:false,
      prueba:""
 }
 
@@ -163,21 +164,42 @@ const initFiltroLanguages = (p_estado_global, action)=>{
 }
 
 
+const comprobarError1 = (ageMin, ageMax) => {
+    let error1 = false;
+
+    ageMax = parseInt(ageMax);
+    ageMin = parseInt(ageMin);
+
+    if (ageMax<0 || !ageMax) {ageMax=0;}
+    if (ageMin<0 || !ageMin) {ageMin=0;}
+
+    if (ageMax<ageMin ){
+      error1 = true;
+    }
+
+    console.log('Validando error 1', error1);
+    console.log('Agemin', ageMin);
+    console.log('Agemax', ageMax);
+
+    return error1;
+}
 
 const changeFiltroAgeMin = (p_estado_global, action)=>{ 
-
-
+    const error1 = comprobarError1(action.ageMin, p_estado_global.ageMax );
+   
     return {
         ...p_estado_global,
-        ageMin: action.ageMin          
+        ageMin: action.ageMin,
+        error_filtro_rango_edad:error1           
     }
 }
 
 const changeFiltroAgeMax = (p_estado_global, action)=>{ 
- 
+    const error1 = comprobarError1(p_estado_global.ageMin, action.ageMax );
     return {
         ...p_estado_global,
-        ageMax: action.ageMax          
+        ageMax: action.ageMax ,
+        error_filtro_rango_edad: error1         
     }
 }
 

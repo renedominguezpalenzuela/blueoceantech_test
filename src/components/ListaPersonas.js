@@ -118,6 +118,8 @@ const mapStateToProps = state => {
      
       }
 
+      //chequeo de errores
+
    
 
     return lista_final;

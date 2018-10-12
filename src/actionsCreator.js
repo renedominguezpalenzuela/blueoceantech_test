@@ -124,7 +124,8 @@ const ac_updatePersona = (persona, indice) =>{
 }
 
 
-const ac_changeFiltroAgeMax = ( ageMax) =>{   
+const ac_changeFiltroAgeMax = ( ageMax) =>{ 
+      
     return {    
             type: "CHANGE_FILTRO_AGE_MAX",
                 ageMax: ageMax                        

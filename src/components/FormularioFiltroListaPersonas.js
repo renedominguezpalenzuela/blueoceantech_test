@@ -64,7 +64,8 @@ let   FormularioFiltroListaPersonas = (props) => {
                    
                    <div className="col-3 d-flex flex-column">
                         <label htmlFor="agemin" className="form-control-sm">Minimum Age</label>
-                        <Field name="agemin" component={renderCampoHTML} placeholder="Enter Min Age" pminAge={props.ageMin}  pmaxAge={props.ageMax}  
+                        {/*<Field name="agemin" component={renderCampoHTML} placeholder="Enter Min Age" pminAge={props.ageMin}  pmaxAge={props.ageMax}  */}
+                        <Field name="agemin" component="input" type="number" step="10"  className="form-control" id="agemin" placeholder="Enter Min Age"                          
                                 onChange={(e) => {                                                         
                                     const val = e.target.value;                                                       
                                     store.dispatch(ac_changeFiltroAgeMin(val));                                                         
@@ -75,14 +76,23 @@ let   FormularioFiltroListaPersonas = (props) => {
 
                     <div className="col-3 d-flex flex-column">
                         <label htmlFor="agemax" className="form-control-sm">Maximum Age</label>                     
-                        <Field name="agemax" component={renderCampoHTML} placeholder="Enter Max Age" pminAge={props.ageMin}  pmaxAge={props.ageMax}
+                        {/*<Field name="agemax" component={renderCampoHTML} placeholder="Enter Max Age" pminAge={props.ageMin}  pmaxAge={props.ageMax}*/}
+                        <Field name="agemax" component="input" type="number" step="10"  className="form-control" id="agemax" placeholder="Enter Max Age"
                                 onChange={(e) => {                                
                                     const val = e.target.value;                                                       
                                     store.dispatch(ac_changeFiltroAgeMax(val));                                    
                                 }}/>
                     </div>
+
+                              
              
-            </div>       
+            </div>  
+
+            {/*Mensajes de error*/}
+            <div className="form-group row"> 
+              { props.error_filtro_rango_edad && <span>ERROR!!! Max age smaller than Min age  </span>}
+                  
+            </div>     
 
         </form>     
                  
@@ -97,7 +107,9 @@ const mapStateToProps = (state) => ({
     fil_Lenguajes: state.mis_datos.fil_Lenguajes,
     filtroNombres: state.mis_datos.formPersonas_filtroNombres,*/
     ageMin: state.mis_datos.ageMin, 
-    ageMax: state.mis_datos.ageMax
+    ageMax: state.mis_datos.ageMax,
+    error_filtro_rango_edad: state.mis_datos.error_filtro_rango_edad
+    
  
 });
 
@@ -130,39 +142,7 @@ const filtroNombresOnChange = (val) =>{
 
   
 
-  const renderCampoHTML =({input, meta,  placeholder, pminAge, pmaxAge})=>{
-      let error1= false;
-      let error2= false;
-
-    let minAge = parseInt(pminAge);
-    let maxAge = parseInt(pmaxAge);
-     
-//Tipos de eventos:
-      //meta.touched  -- Al salir del control
-      //meta.visited -- Onchange
-      if (minAge>maxAge  && meta.visited  && (minAge || maxAge)) {
-          error1=true;
-      } 
-
-      if (minAge===0 && maxAge===0 && meta.visited && (minAge || maxAge) ) {
-        error2=true;
-      } 
-
-       console.log("Min ", minAge);
-       console.log("Max ", maxAge);
-
-     return(
-     <div>
-     
-        {/*…input contiene en los props todos los eventos onChange, onClick etc*/}
-        <input {...input} type="number" step="10"  className="form-control" id="agemin" placeholder={placeholder} />
-        { error1 && <span>ERROR!!! Max age smaller than Min age  </span>}
-        { error2 && <span>ERROR!!! Min age and Max age equal to cero </span>}
-
-     </div>
-     );
-  }   
- 
+  
 
 
   
