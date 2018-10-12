@@ -140,11 +140,11 @@ const filtroNombresOnChange = (val) =>{
 //Tipos de eventos:
       //meta.touched  -- Al salir del control
       //meta.visited -- Onchange
-      if (minAge>maxAge  && meta.touched  && (minAge || maxAge)) {
+      if (minAge>maxAge  && meta.visited  && (minAge || maxAge)) {
           error1=true;
       } 
 
-      if (minAge===0 && maxAge===0 && meta.touched && (minAge || maxAge) ) {
+      if (minAge===0 && maxAge===0 && meta.visited && (minAge || maxAge) ) {
         error2=true;
       } 
 
