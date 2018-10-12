@@ -137,7 +137,7 @@ const filtroNombresOnChange = (val) =>{
     let minAge = parseInt(pminAge);
     let maxAge = parseInt(pmaxAge);
      
-
+//Tipos de eventos:
       //meta.touched  -- Al salir del control
       //meta.visited -- Onchange
       if (minAge>maxAge  && meta.touched  && (minAge || maxAge)) {
