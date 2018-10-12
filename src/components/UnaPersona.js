@@ -8,7 +8,7 @@ import Chip from './Chip';
 
 import {ac_delPersona} from '../actionsCreator';
 import {ac_EditPersona} from '../actionsCreator';
-import {ac_accionNula} from '../actionsCreator';
+
 
 
 //------------------------------------------------------------------

@@ -10,18 +10,14 @@ import {BrowserRouter,Route, Switch} from 'react-router-dom';
 import {connect} from 'react-redux';
 import FormularioUnaPersona from './components/FormularioUnaPersona';
 import store from './store';
-import {ac_cargarDatos} from './actionsCreator';
+
 
 class App extends Component {
 
 
   constructor(props){
     super(props);
-    //Inicializando (llamando API (fake) devuelve datos en json)
-    if (store.getState().mis_datos.inicializando){
-      //console.log('inicializando');
-      store.dispatch(ac_cargarDatos());
-    }
+    
 
     
   

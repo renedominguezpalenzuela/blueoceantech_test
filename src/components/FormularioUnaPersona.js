@@ -53,7 +53,8 @@ let   FormularioUnaPersona = (props) => {
                     if (persona.name) {
                       salvar(persona);
                       store.dispatch(ac_initFiltroLanguages());
-                      props.history.goBack();
+                      //props.history.goBack();
+                      props.history.push('/lista');
                     }
 
                  }}            
@@ -61,7 +62,8 @@ let   FormularioUnaPersona = (props) => {
 
              <button type="button" className="btn btn-primary mr-sm-2 d-block" onClick={(e) => {
                  store.dispatch(ac_initFiltroLanguages());
-                 props.history.goBack();
+                 //props.history.goBack();
+                 props.history.push('/lista');
 
              }
 

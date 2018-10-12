@@ -103,8 +103,8 @@ const mapStateToProps = state => {
 
       //Tercer filtro por Edad
       let lista_final=[];
-      const ageMin = props.ageMin;
-      const ageMax = props.ageMax;
+      const ageMin = parseInt(props.ageMin);
+      const ageMax = parseInt(props.ageMax);
        
       if ( ageMin<=ageMax && (ageMin>0 || ageMax>0) ){
 
