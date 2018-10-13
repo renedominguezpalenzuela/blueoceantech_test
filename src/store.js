@@ -8,6 +8,7 @@ import { devToolsEnhancer } from 'redux-devtools-extension';
 //TODO: redux no permite el uso de extructuras complejas
 //      crear varios estados y combinarlos 
 const estado_global = {
+    dropDownMenuIsToogleOn:true,
     una_persona: {},
     lista_Personas: [],
     lista_Lenguajes:[],
@@ -206,6 +207,22 @@ const changeFiltroAgeMax = (p_estado_global, action)=>{
 
 
 
+const toggleDropDownMenu = (p_estado_global, action)=>{ 
+ 
+    return {
+        ...p_estado_global,
+        dropDownMenuIsToogleOn: !p_estado_global.dropDownMenuIsToogleOn        
+    }
+}
+
+const closeDropDownMenu = (p_estado_global, action)=>{ 
+ 
+    return {
+        ...p_estado_global,
+        dropDownMenuIsToogleOn: false        
+    }
+}
+
 const prueba = (p_estado_global, action)=>{ 
    // console.log("nombre ",action.prueba)
     return {
@@ -288,6 +305,19 @@ switch(action.type)   {
 
     case 'PRUEBA':{
         return prueba(state, action);
+    }
+
+
+    case 'TOGGLE_DROP_DOWN_MENU':{
+
+       return toggleDropDownMenu(state, action);
+    }
+
+    case 'CLOSE_DROP_DOWN_MENU':{
+
+        return closeDropDownMenu(state, action);
+
+
     }
 
     

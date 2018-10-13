@@ -140,6 +140,17 @@ const ac_changeFiltroAgeMin = (  ageMin) =>{
 }
 
 
+const ac_toogleDropDownMenu = (  ) =>{   
+    return {    
+            type: "TOGGLE_DROP_DOWN_MENU"
+    }
+}
+
+const ac_closeDropDownMenu = (  ) =>{   
+    return {    
+            type: "CLOSE_DROP_DOWN_MENU"
+    }
+}
 
 
 
@@ -147,4 +158,8 @@ const ac_changeFiltroAgeMin = (  ageMin) =>{
 
 
 
-export {ac_updatePersona,ac_addPersona, ac_initFiltroLanguages, ac_EditPersona, ac_delPersona, ac_togleSideBar, ac_cargarDatos, ac_addLenguajeFiltro, ac_addNombreFiltro, ac_delLenguajeFiltro, ac_accionNula,ac_changeFiltroAgeMin,ac_changeFiltroAgeMax};
+
+
+
+export {ac_updatePersona,ac_addPersona, ac_initFiltroLanguages, ac_EditPersona, ac_delPersona, ac_togleSideBar, ac_cargarDatos, ac_addLenguajeFiltro, ac_addNombreFiltro, ac_delLenguajeFiltro, ac_accionNula,
+    ac_changeFiltroAgeMin,ac_changeFiltroAgeMax, ac_toogleDropDownMenu, ac_closeDropDownMenu};
