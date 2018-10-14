@@ -9,7 +9,11 @@ import {ac_accionNula} from '../actionsCreator';
 
 
 
-//Devuelve arreglo con lista de personas aplicando los filtros
+//----------------------------------------------------------------------
+// Lista de personas aplicando los filtros
+//----------------------------------------------------------------------
+
+
 const   ListaPersonas = (props) => {
        return (                        
             <div className="col-10">
@@ -112,8 +116,8 @@ const mapStateToProps = state => {
 
       //Tercer filtro por Edad
       let lista_final=[];
-      const ageMin = parseInt(props.ageMin);
-      const ageMax = parseInt(props.ageMax);
+      const ageMin = parseInt(props.ageMin, 10);
+      const ageMax = parseInt(props.ageMax, 10);
        
       if ( ageMin<=ageMax && (ageMin>0 || ageMax>0) ){
 

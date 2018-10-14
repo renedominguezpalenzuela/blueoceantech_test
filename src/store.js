@@ -160,7 +160,10 @@ const initFiltroLanguages = (p_estado_global, action)=>{
     return {
         ...p_estado_global,
         fil_Lenguajes: [],
-        una_persona:[]
+        una_persona:[],
+        ageMin:0,
+        ageMax:0
+
         
     }
 }
@@ -169,8 +172,8 @@ const initFiltroLanguages = (p_estado_global, action)=>{
 const comprobarError1 = (ageMin, ageMax) => {
     let error1 = false;
 
-    ageMax = parseInt(ageMax);
-    ageMin = parseInt(ageMin);
+    ageMax = parseInt(ageMax, 10);
+    ageMin = parseInt(ageMin, 10);
 
     if (ageMax<0 || !ageMax) {ageMax=0;}
     if (ageMin<0 || !ageMin) {ageMin=0;}
@@ -179,9 +182,7 @@ const comprobarError1 = (ageMin, ageMax) => {
       error1 = true;
     }
 
-    console.log('Validando error 1', error1);
-    console.log('Agemin', ageMin);
-    console.log('Agemax', ageMax);
+ 
 
     return error1;
 }
@@ -270,6 +271,7 @@ switch(action.type)   {
     case 'ADD_LENGUAJE_FILTRO':{
         return addLenguajeFiltro(state, action);
     }
+
 
     case 'DEL_LENGUAJE_FILTRO':{
         return delLenguajeFiltro(state, action);

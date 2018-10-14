@@ -11,7 +11,7 @@ import {getLanguageObjectFromName} from './Funciones.js';
 import Chip from './Chip.js';
 
 //--------------------------------------------------
-//Combobox seleccion de lenguajes
+//  Combobox filtro seleccion de lenguajes
 //--------------------------------------------------
 
 let   FiltroLenguajes = (props) => {

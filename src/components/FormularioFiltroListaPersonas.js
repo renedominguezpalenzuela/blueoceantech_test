@@ -9,7 +9,7 @@ import {ac_addNombreFiltro, ac_changeFiltroAgeMin, ac_changeFiltroAgeMax, ac_acc
 
 
 //-------------------------------------------------------
-//Filtros Parte superior Vista: Lista de Personas 
+// Filtros Parte superior Vista: Lista de Personas 
 //-------------------------------------------------------
 
 let   FormularioFiltroListaPersonas = (props) => {

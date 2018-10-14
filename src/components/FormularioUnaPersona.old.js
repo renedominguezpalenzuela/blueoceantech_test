@@ -1,10 +1,10 @@
-import React  from 'react';
+import React, {Component} from 'react';
 import {reduxForm, Field, formValueSelector } from 'redux-form';
 import { connect } from 'react-redux';
 import store from '../store.js';
 import FiltroLenguajes from './FiltroLenguajes.js';
 import {ac_initFiltroLanguages,  ac_addPersona, ac_updatePersona, ac_accionNula} from '../actionsCreator.js';
-
+import md5 from 'md5';
 
                      
 
@@ -20,14 +20,11 @@ import {ac_initFiltroLanguages,  ac_addPersona, ac_updatePersona, ac_accionNula}
 let   FormularioUnaPersona = (props) => {
 
    let persona = props.una_persona;
-   let imagen_full_path = '';
-   let imagen='';
+   let imagen = '';
    if (props.una_persona.image) {
-     imagen_full_path = process.env.PUBLIC_URL + '/img/photos/'+props.una_persona.image;
-     imagen=props.una_persona.image;
+     imagen = process.env.PUBLIC_URL + '/img/photos/'+props.una_persona.image;
    } else {
-    imagen_full_path = process.env.PUBLIC_URL + '/img/photos/nofoto2.jpg';
-    imagen='nofoto2.jpg';
+    imagen = process.env.PUBLIC_URL + '/img/photos/nofoto2.jpg';
    }
   
      return ( 
@@ -42,11 +39,15 @@ let   FormularioUnaPersona = (props) => {
                  <div className="col-3"> 
                                 
                      <div className="form-group row">                                       
-                        <img src={imagen_full_path} className="w-75" alt=""/>  
+                        <img src={imagen} className="w-75" alt=""/>  
                      </div>   
                      <div className="form-group row col-2"> 
                           
-                             
+                     {/*<ImageUpload/>*/}
+                          
+                        <Field  name="image" component="input" type="file" className="fileInput"  />                                                
+                        <button className="btn btn-sm btn-primary mr-sm-2" onClick={this.uploadHandler}>Upload!</button>
+                        
                         
                      </div>   
 
@@ -105,7 +106,6 @@ let   FormularioUnaPersona = (props) => {
                       persona.name = props.nombre;
                       persona.age = props.age;
                       persona.description = props.description;
-                      persona.image = imagen;
                      //realizar las validaciones con el metodo de redux-form
                      console.log('Persona ',persona);
                      
@@ -200,10 +200,13 @@ FormularioUnaPersona = connect(
 
    const salvar = (persona) =>{   
 
-  
-
-    
+    let fecha =new  Date().toISOString();
+    let ficheroenServidor = md5(persona.image)+persona.image.split('.').pop();;
  
+   console.log(ficheroenServidor);
+//console.log(fecha);
+    
+    //ERROR Aqui falla en encontrar 
     const vID = persona.id;
     const obj = store.getState().mis_datos.lista_Personas.find(unaPersona => unaPersona.id === vID); 
   

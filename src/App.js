@@ -10,22 +10,18 @@ import {BrowserRouter,Route, Switch} from 'react-router-dom';
 import {connect} from 'react-redux';
 import FormularioUnaPersona from './components/FormularioUnaPersona';
 
-
-
 class App extends Component {
 
-  constructor(props){
+  /*constructor(props){
     super(props);
   
-  }
+  }*/
 
   componentDidMount(){    
     
   }
 
   render() {
-
-
 
     const mostrarSideBar_ClassSTR = "bg-dark d-flex align-items-stretch "+(this.props.mostrarSideBar ? 'toggled' : '');
   

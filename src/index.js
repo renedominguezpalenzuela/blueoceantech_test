@@ -9,9 +9,8 @@ import {ac_cargarDatos} from './actionsCreator';
 
 
 
-     //Inicializando (llamando API (fake) devuelve datos en json)
+//Inicializando (llamando API (fake) devuelve datos en json)
   if (store.getState().mis_datos.inicializando){
-
       console.log('inicializando');
       store.dispatch(ac_cargarDatos());
   }
