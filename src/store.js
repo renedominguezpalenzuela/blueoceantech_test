@@ -8,7 +8,7 @@ import { devToolsEnhancer } from 'redux-devtools-extension';
 //TODO: redux no permite el uso de extructuras complejas
 //      crear varios estados y combinarlos 
 const estado_global = {
-    dropDownMenuIsToogleOn:true,
+    dropDownMenuIsToogleOn:false,
     una_persona: {},
     lista_Personas: [],
     lista_Lenguajes:[],

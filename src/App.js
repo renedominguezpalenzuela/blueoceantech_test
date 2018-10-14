@@ -9,23 +9,17 @@ import ListaPersonas from './components/ListaPersonas';
 import {BrowserRouter,Route, Switch} from 'react-router-dom';
 import {connect} from 'react-redux';
 import FormularioUnaPersona from './components/FormularioUnaPersona';
-import store from './store';
+
 
 
 class App extends Component {
 
-
   constructor(props){
     super(props);
-    
-
-    
   
   }
 
-  componentDidMount(){
-        
-       
+  componentDidMount(){    
     
   }
 
@@ -35,8 +29,8 @@ class App extends Component {
 
     const mostrarSideBar_ClassSTR = "bg-dark d-flex align-items-stretch "+(this.props.mostrarSideBar ? 'toggled' : '');
   
-    return (   
-      
+    return (  
+    
       <BrowserRouter  >    
       <div>  
         <div className="row">
@@ -71,10 +65,7 @@ class App extends Component {
          </div>
        
     </div>    
-    </BrowserRouter>
-
-      
- 
+    </BrowserRouter>         
       
     );
   }

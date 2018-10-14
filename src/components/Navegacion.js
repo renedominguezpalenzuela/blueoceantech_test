@@ -132,7 +132,9 @@ class  Navegacion extends React.Component {
           <div className="mx-auto order-0">
 
               <NavLink  className="navbar-brand mx-auto"  to ="/"
-               onClick={(e) => {this.closeDropDownMenu(e)}}> <img src={process.env.PUBLIC_URL + '/img/logo.png'} alt="Logo" style={estilo}/> BlueOcean Tech Test </NavLink>           
+               onClick={(e) => {
+
+                 this.props.closeDropDownMenu(e)}}> <img src={process.env.PUBLIC_URL + '/img/logo.png'} alt="Logo" style={estilo}/> BlueOcean Tech Test </NavLink>           
               
           </div>
 
