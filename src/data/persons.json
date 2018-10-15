@@ -1,6 +1,6 @@
 [
   { 
-   "id": 1, "name": "Rene Dominguez", "age": 100,  "image": "avatar.jpg" , 
+   "id": 1, "name": "Don Miller", "age": 100,  "image": "avatar.jpg" , 
     "languages": [{"id": 1, "name": "Java"},{"id": 4, "name": "C#"},{"id": 9, "name": "PHP"},{"id": 12, "name": "Objective-C"}] ,
     "description" : "AAA Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "     
   },
@@ -10,7 +10,7 @@
        "description" : "Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "           
   },
   { 
-   "id": 3, "name": "Will Smith", "age": 90,  "image": "elliot.jpg" , 
+   "id": 3, "name": "Will Smith", "age": 90,  "image": "worker.png" , 
     "languages": [ {"id": 17, "name": "Go"},{"id": 4, "name": "C#"},{"id": 14, "name": "Perl"}],
     "description" : "Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "           
   }
@@ -24,7 +24,33 @@
     "id": 5, "name": "Jhon Doe", "age": 20,  "image": "elliot.jpg" ,
      "languages": [{"id": 1, "name": "Java"}, {"id": 19, "name": "Visual Basic"},{"id": 4, "name": "C#"},{"id": 13, "name": "Assembly"}],
      "description" : "Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "           
+   },
+   
+  { 
+    "id": 6, "name": "Jake Taylor", "age": 24,  "image": "jane.png" ,
+     "languages": [{"id": 1, "name": "Java"}, {"id": 19, "name": "Visual Basic"},{"id": 4, "name": "C#"}, {"id": 10, "name": "MatLab"},{"id": 19, "name": "Visual Basic"}],
+     "description" : "Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "           
+   },
+
+     { 
+    "id": 7, "name": "Jasmine Scott", "age": 32,  "image": "jasmine.png" ,
+     "languages": [{"id": 1, "name": "Java"}, {"id": 19, "name": "Visual Basic"},{"id": 4, "name": "C#"}, {"id": 10, "name": "MatLab"},{"id": 19, "name": "Visual Basic"}],
+     "description" : "Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "           
+   },
+   
+        { 
+    "id": 8, "name": "Susan Green", "age": 56,  "image": "susan.png" ,
+     "languages": [{"id": 1, "name": "Java"}, {"id": 19, "name": "Visual Basic"},{"id": 4, "name": "C#"}, {"id": 10, "name": "MatLab"},{"id": 19, "name": "Visual Basic"}],
+     "description" : "Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "           
+   },
+   
+          { 
+    "id": 9, "name": "Black Cat", "age": 47,  "image": "thecat.png" ,
+     "languages": [{"id": 1, "name": "Java"}, {"id": 19, "name": "Visual Basic"},{"id": 4, "name": "C#"}, {"id": 10, "name": "MatLab"},{"id": 19, "name": "Visual Basic"},  {"id": 16, "name": "Delphi"},  {"id": 17, "name": "Go"},  {"id": 18, "name": "Scratch"}],
+     "description" : "Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "           
    }
+   
+   
 
     
 ] 
