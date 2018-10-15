@@ -23,7 +23,7 @@
   { 
     "id": 5, "name": "Jhon Doe", "age": 20,  "image": "elliot.jpg" ,
      "languages": [{"id": 1, "name": "Java"}, {"id": 19, "name": "Visual Basic"},{"id": 4, "name": "C#"},{"id": 13, "name": "Assembly"}],
-     "description" : "Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "           
+     "description" : "Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat "           
    },
    
   { 
