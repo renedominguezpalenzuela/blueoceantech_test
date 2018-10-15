@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import store from '../store.js';
 
 import FiltroLenguajes from './FiltroLenguajes.js';
-import {ac_addNombreFiltro, ac_changeFiltroAgeMin, ac_changeFiltroAgeMax, ac_accionNula} from '../actionsCreator.js';
+import {ac_addNombreFiltro,ac_initFiltros, ac_changeFiltroAgeMin, ac_changeFiltroAgeMax, ac_accionNula} from '../actionsCreator.js';
 
 
 
@@ -40,6 +40,7 @@ let   FormularioFiltroListaPersonas = (props) => {
                     <div className="col-2 d-flex flex-column">
                         <button type="button" className="btn btn-primary mr-sm-2 d-block" 
                             onClick={(e) => {
+                                store.dispatch(ac_initFiltros());
                                 props.history.push('/new');                           
                             }}
                         >New</button>
@@ -51,17 +52,7 @@ let   FormularioFiltroListaPersonas = (props) => {
              {/*Filtro por rango de edad*/}
              <div className="form-group row">          
                    
-    {/*
-                    <div className="col-3 d-flex flex-column">
-                        <label htmlFor="agemin" className="form-control-sm">Minimum Age</label>
-                        <Field name="agemin" component="input" type="number" step="10"  className="form-control" id="agemin" placeholder="Enter Min Age"  
-                                onChange={(e) => {                                                         
-                                    const val = e.target.value;                                                       
-                                    store.dispatch(ac_changeFiltroAgeMin(val));                                                         
-                                }}/>
-                    </div>
-   */}
-                   
+                  
                    <div className="col-3 d-flex flex-column">
                         <label htmlFor="agemin" className="form-control-sm">Minimum Age</label>
                         {/*<Field name="agemin" component={renderCampoHTML} placeholder="Enter Min Age" pminAge={props.ageMin}  pmaxAge={props.ageMax}  */}
@@ -75,8 +66,7 @@ let   FormularioFiltroListaPersonas = (props) => {
                  
 
                     <div className="col-3 d-flex flex-column">
-                        <label htmlFor="agemax" className="form-control-sm">Maximum Age</label>                     
-                        {/*<Field name="agemax" component={renderCampoHTML} placeholder="Enter Max Age" pminAge={props.ageMin}  pmaxAge={props.ageMax}*/}
+                        <label htmlFor="agemax" className="form-control-sm">Maximum Age</label>                                            
                         <Field name="agemax" component="input" type="number" step="10"  className="form-control" id="agemax" placeholder="Enter Max Age"
                                 onChange={(e) => {                                
                                     const val = e.target.value;                                                       
@@ -100,16 +90,12 @@ let   FormularioFiltroListaPersonas = (props) => {
 }   
 
 
-
+//Acceso a los valores del store mediante props
 const mapStateToProps = (state) => ({
-  
-   /* lista_Lenguajes: state.mis_datos.lista_Lenguajes,
-    fil_Lenguajes: state.mis_datos.fil_Lenguajes,
-    filtroNombres: state.mis_datos.formPersonas_filtroNombres,*/
+
     ageMin: state.mis_datos.ageMin, 
     ageMax: state.mis_datos.ageMax,
-    error_filtro_rango_edad: state.mis_datos.error_filtro_rango_edad
-    
+    error_filtro_rango_edad: state.mis_datos.error_filtro_rango_edad  
  
 });
 

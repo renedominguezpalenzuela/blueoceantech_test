@@ -3,7 +3,8 @@ import {reduxForm, Field, formValueSelector } from 'redux-form';
 import { connect } from 'react-redux';
 import store from '../store.js';
 import FiltroLenguajes from './FiltroLenguajes.js';
-import {ac_initFiltroLanguages,  ac_addPersona, ac_updatePersona, ac_accionNula} from '../actionsCreator.js';
+import {ac_initFiltros, ac_accionNula} from '../actionsCreator.js';
+import {salvar} from './Funciones';
 
 
                      
@@ -19,6 +20,8 @@ import {ac_initFiltroLanguages,  ac_addPersona, ac_updatePersona, ac_accionNula}
 */
 let   FormularioUnaPersona = (props) => {
 
+
+   //Determinando foto de la persona a mostrar 
    let persona = props.una_persona;
    let imagen_full_path = '';
    let imagen='';
@@ -107,13 +110,15 @@ let   FormularioUnaPersona = (props) => {
                       persona.description = props.description;
                       persona.image = imagen;
                      //realizar las validaciones con el metodo de redux-form
-                     console.log('Persona ',persona);
+                     //console.log('Persona ',persona);
                      
                     if (persona.name) {
                       salvar(persona);
-                      store.dispatch(ac_initFiltroLanguages());
+                      store.dispatch(ac_initFiltros());
                       //props.history.goBack();
                       props.history.push('/lista');
+                    } else {
+
                     }
 
                  }}            
@@ -122,7 +127,7 @@ let   FormularioUnaPersona = (props) => {
 
              {/*Boton Cancelar*/}
              <button type="button" className="btn btn-primary mr-sm-2 d-block" onClick={(e) => {
-                 store.dispatch(ac_initFiltroLanguages());
+                 store.dispatch(ac_initFiltros());
                  props.history.goBack();
                  //props.history.push('/lista');
 
@@ -139,13 +144,13 @@ let   FormularioUnaPersona = (props) => {
  }   
  
 
-
+//Acceso a los valores del store mediante props
+//inicializando campos del formulario
  const mapStateToProps = (state) => ({
     initialValues : {
         nombre: state.mis_datos.una_persona.name,
         age: state.mis_datos.una_persona.age,
         description: state.mis_datos.una_persona.description
-
     },
     una_persona: state.mis_datos.una_persona,
      lista_Lenguajes: state.mis_datos.lista_Lenguajes,
@@ -159,31 +164,27 @@ let   FormularioUnaPersona = (props) => {
  }
  
  FormularioUnaPersona = reduxForm({ 
-     form:'formUnaPersona'
-     
-    })(FormularioUnaPersona)
+     form:'formUnaPersona'   
+     })(FormularioUnaPersona)
    
 
 
- FormularioUnaPersona = connect(
+FormularioUnaPersona = connect(
        mapStateToProps,
        mapDispatchToProps
-   )(FormularioUnaPersona);
+       )(FormularioUnaPersona);
 
 
-  // Decorate with connect to read form values
-  //Mapeando campos del formulario a props
+// Decorate with connect to read form values
+//Mapeando campos del formulario a props
 const selector = formValueSelector('formUnaPersona') // <-- same as form name
 FormularioUnaPersona = connect(
   state => {
-    // can select values individually
+    // Obteniendo valores de componentes del formulario
     const nombre = selector(state, 'nombre')
     const age = selector(state, 'age')
     const description = selector(state, 'description')
-    
-    
-    // or together as a group
-    //const { firstName, lastName } = selector(state, 'firstName', 'lastName')
+
     return {
       nombre,
       age,
@@ -192,38 +193,11 @@ FormularioUnaPersona = connect(
   }
 )(FormularioUnaPersona)
    
-   export default FormularioUnaPersona;
+export default FormularioUnaPersona;
 
 
 
    
 
-   const salvar = (persona) =>{   
-
-  
-
-    
- 
-    const vID = persona.id;
-    const obj = store.getState().mis_datos.lista_Personas.find(unaPersona => unaPersona.id === vID); 
-  
-    const fil_Lenguajes = store.getState().mis_datos.fil_Lenguajes;
-    persona.languages=fil_Lenguajes;
-
-        if (obj){
-            //console.log('Persona encontrada ', persona);
-            const indice =store.getState().mis_datos.lista_Personas.indexOf(persona);
-            store.dispatch(ac_updatePersona(persona, indice));        
-        } else {
-            //console.log('Persona NO encontrada ', persona);
-           // persona.image="elliot.jpg";
-            store.dispatch(ac_addPersona(persona));
-        }
-
-        console.log('formPersona  ',store.getState().mis_datos.lista_Personas);
-    
-  }
-  
- 
    
  

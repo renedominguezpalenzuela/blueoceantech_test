@@ -19,7 +19,7 @@ import {ac_closeDropDownMenu, ac_toogleDropDownMenu} from '../actionsCreator';
 class  Navegacion extends React.Component {            
   render() {
 
-    
+    //Clase que define la visibilidad del dropdown menu
      const classDropDownMenu = 'navbar-dark bg-dark dropdown-menu' + (this.props.dropDownMenuIsToogleOn ? ' show' : '')   
          return ( 
 
@@ -81,17 +81,15 @@ class  Navegacion extends React.Component {
 }
 
  
-
+//Acceso a los valores del store mediante props
 const mapStateToProps = state => {  
     return {
-      //Obtiene el estado cart contenido en el store
-     //  products: state.products,
-      // variable_props: state.variable_estado_1 
-      dropDownMenuIsToogleOn: state.mis_datos.dropDownMenuIsToogleOn
-        
+      dropDownMenuIsToogleOn: state.mis_datos.dropDownMenuIsToogleOn      
     }
   }
   
+
+  //Acceso a funciones  mediante props
   const mapDispatchToProps = dispatch => {
     return     {
        togleSideBar() {

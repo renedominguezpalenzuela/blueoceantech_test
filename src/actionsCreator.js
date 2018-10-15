@@ -21,7 +21,7 @@ const ac_togleSideBar = mostrarSideBar =>{
 const ac_cargarDatos = () =>{
     const persons = require('./data/persons.json');
     const lenguajes = require('./data/languages.json');
- 
+    
    
 
      return {
@@ -96,7 +96,7 @@ const ac_accionNula = (persona) =>{
 
 
 
-const ac_initFiltroLanguages = () =>{
+const ac_initFiltros = () =>{
     return {    
             type: "INIT_FILTRO_LANGUAJES"                        
     }
@@ -161,5 +161,5 @@ const ac_closeDropDownMenu = (  ) =>{
 
 
 
-export {ac_updatePersona,ac_addPersona, ac_initFiltroLanguages, ac_EditPersona, ac_delPersona, ac_togleSideBar, ac_cargarDatos, ac_addLenguajeFiltro, ac_addNombreFiltro, ac_delLenguajeFiltro, ac_accionNula,
+export {ac_updatePersona,ac_addPersona, ac_initFiltros, ac_EditPersona, ac_delPersona, ac_togleSideBar, ac_cargarDatos, ac_addLenguajeFiltro, ac_addNombreFiltro, ac_delLenguajeFiltro, ac_accionNula,
     ac_changeFiltroAgeMin,ac_changeFiltroAgeMax, ac_toogleDropDownMenu, ac_closeDropDownMenu};

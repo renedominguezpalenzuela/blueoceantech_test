@@ -15,6 +15,7 @@ import Navegacion from '../components/Navegacion';
 import SideBar from '../components/SideBar';
 import ListaPersonas from '../components/ListaPersonas';
 import UnaPersona from '../components/UnaPersona';
+import FormularioUnaPersona from '../components/FormularioUnaPersona';
 
 configure({ adapter: new Adapter() });
 
@@ -26,9 +27,7 @@ describe('Components render tests', () => {
                     <Provider store={store} >
                       <App/>
                     </Provider>
-      );
-
-     
+      );   
    });
 
    it('<ListaPersonas> renders OK', () => {  
@@ -37,7 +36,15 @@ describe('Components render tests', () => {
                     <ListaPersonas/>
                   </Provider>
     );
-    //expect(wrapper.find(UnaPersona)).to.have.length(5);
+  });
+    
+    it('<FormularioUnaPersona> renders OK', () => {  
+      const wrapper = render(
+                    <Provider store={store} >
+                      <FormularioUnaPersona/>
+                    </Provider>
+      );
+      
   
  });
 
@@ -47,24 +54,3 @@ describe('Components render tests', () => {
 
 
 
-/*
-describe('Local State', () => {
-    it('should increment the counter in state', () => {
-      //se inicializa el contador a 0
-      const state = { counter: 0 };
-      //se le pasa a la funcion de incrementar en 1
-      const newState = doIncrement(state);
-  
-      //se espera que el resultado sea igual a 1
-      expect(newState.counter).to.equal(1);
-    });
-  
-    it('should decrement the counter in state', () => {
-      const state = { counter: 0 };
-      const newState = doDecrement(state);
-  
-      expect(newState.counter).to.equal(-1);
-    });
-  });
-
-*/

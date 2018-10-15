@@ -1,12 +1,12 @@
 import React from 'react';
-import store from '../store.js';
 import {connect} from 'react-redux';
 import {reduxForm, Field} from 'redux-form';
+import {selectLenguajeOnChange} from './Funciones';
 
 
-import {ac_addLenguajeFiltro, ac_accionNula} from '../actionsCreator.js';
+import { ac_accionNula} from '../actionsCreator.js';
 
-import {getLanguageObjectFromName} from './Funciones.js';
+
 
 import Chip from './Chip.js';
 
@@ -18,7 +18,7 @@ let   FiltroLenguajes = (props) => {
 
   //console.log("Lenguajes2 ",props.una_persona.languages)
 
-    return ( 
+return ( 
 <span>
         <label htmlFor="selectLenguaje" className="form-control-sm">Skills</label>
  
@@ -49,9 +49,7 @@ let   FiltroLenguajes = (props) => {
 
 const mapStateToProps = (state) => ({
     lista_Lenguajes: state.mis_datos.lista_Lenguajes,
-    //una_persona: state.mis_datos.una_persona
     fil_Lenguajes: state.mis_datos.fil_Lenguajes
-    //filtroNombres: state.mis_datos.formPersonas_filtroNombres
 });
 
 
@@ -64,24 +62,14 @@ FiltroLenguajes = reduxForm({
    })(FiltroLenguajes)
   
    
-   FiltroLenguajes = connect(
+FiltroLenguajes = connect(
       mapStateToProps,
       mapDispatchToProps
   )(FiltroLenguajes);
   
-  export default FiltroLenguajes;
-
-  const selectLenguajeOnChange = (val) =>{     
-
-    const language =getLanguageObjectFromName(val) ;
-    
-     
-    if (val){            
-      store.dispatch(ac_addLenguajeFiltro(language));
+export default FiltroLenguajes;
 
 
-    }
- }
   
 
 
